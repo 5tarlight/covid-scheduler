@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
 import * as serviceWorker from './serviceWorker';
-import './styles/global.scss'
 
 import modules from './modules'
 import { createStore } from 'redux'

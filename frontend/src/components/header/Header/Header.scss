@@ -1,0 +1,11 @@
+@import '../../../styles/utils.scss';
+
+.header-container {
+  background-color: $theme-color-2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 5px;
+  width: 100%;
+}
