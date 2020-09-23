@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './Header.scss'
 import HeaderNav from '../HeaderNav/HeaderNav'
+import PropTypes from 'prop-types'
 
 const cx = classNames.bind(styles)
 
@@ -30,6 +31,14 @@ const Header = ({ links }) => {
       {navs}
     </div>
   )
+}
+
+Header.propTypes = {
+  links: PropTypes.arrayOf(PropTypes.instanceOf({ link: PropTypes.string.isRequired, name: PropTypes.string.isRequired })) 
+}
+
+Header.defaultProps = {
+  links: []
 }
 
 export default Header
