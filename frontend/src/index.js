@@ -4,9 +4,17 @@ import Root from './components/Root';
 import * as serviceWorker from './serviceWorker';
 import './styles/global.scss'
 
+import modules from './modules'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+const store = createStore(modules, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <Provider store={store}>
+      <Root />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
