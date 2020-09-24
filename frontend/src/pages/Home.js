@@ -1,10 +1,9 @@
 import React from 'react'
+import { CovidText } from '../components'
 
 const Home = () => {
   return (
-    <div>
-      ㅎㅇㅌ
-    </div>
+    <CovidText confirmed={0} />
   )
 }
 
