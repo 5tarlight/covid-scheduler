@@ -4,10 +4,13 @@ import Root from './components/Root';
 import * as serviceWorker from './serviceWorker';
 
 import modules from './modules'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import penderMiddleware from 'redux-pender'
 
-const store = createStore(modules, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(modules, applyMiddleware(
+  penderMiddleware())
+)
 
 ReactDOM.render(
   <React.StrictMode>

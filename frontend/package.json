@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.20.0",
     "classnames": "^2.2.6",
     "immutable": "^4.0.0-rc.12",
     "node-sass": "^4.14.1",
@@ -16,7 +17,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
-    "redux-actions": "^2.6.5"
+    "redux-actions": "^2.6.5",
+    "redux-pender": "^2.0.12"
   },
   "scripts": {
     "start": "react-scripts start",
