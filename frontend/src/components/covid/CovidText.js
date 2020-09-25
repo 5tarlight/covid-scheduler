@@ -6,18 +6,8 @@ import PropTypes from 'prop-types'
 const cx = classNames.bind(styles)
 
 const CovidText = ({ confirmed }) => {
-  let isBig = false, isMedium = false, isSmall = false
-
-  if (confirmed <= 10) isBig = true
-  else if (confirmed <= 100) isMedium = true
-  else isBig = true
-
   return (
-    <p className={cx({
-      'big': isBig,
-      'medium': isMedium,
-      'small': isSmall
-    })}>확진자 {confirmed}명</p>
+    <p className={cx('covid-text')}>확진자 {confirmed}명</p>
   )
 }
 
