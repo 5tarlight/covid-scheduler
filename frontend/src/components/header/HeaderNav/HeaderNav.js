@@ -12,7 +12,8 @@ const HeaderNav = ({ link, name }) => {
       className={cx('header-nav')}
       to={link}
       style={{ textDecoration: 'none' }}
-    >{name}</Link>
+    >{name}
+    </Link>
   )
 }
 

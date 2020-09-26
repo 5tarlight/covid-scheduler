@@ -9,7 +9,7 @@ const cx = classNames.bind(styles)
 /**
  * @param links
  * array of objects that contain url and name
- * 
+ *
  * [
  *  {
  *    url: '/',
@@ -18,12 +18,12 @@ const cx = classNames.bind(styles)
  * ]
 */
 const Header = ({ links }) => {
-  const navs = links.map(( nav, key ) => (
+  const navs = links.map((nav, key) => (
     <HeaderNav
       key={key}
       link={nav.link}
       name={nav.name}
-    ></HeaderNav>
+    />
   ))
 
   return (
@@ -34,7 +34,7 @@ const Header = ({ links }) => {
 }
 
 Header.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.instanceOf({ link: PropTypes.string.isRequired, name: PropTypes.string.isRequired })) 
+  links: PropTypes.arrayOf(PropTypes.shape({ link: PropTypes.string.isRequired, name: PropTypes.string.isRequired }))
 }
 
 Header.defaultProps = {

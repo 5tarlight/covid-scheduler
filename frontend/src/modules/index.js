@@ -4,5 +4,5 @@ import covid from './covid'
 
 export default combineReducers({
   covid,
-  pender: penderReducer,
+  pender: penderReducer
 })

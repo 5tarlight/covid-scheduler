@@ -3,7 +3,7 @@ import { pender } from 'redux-pender'
 import axios from 'axios'
 import { serviceKey } from './secret'
 
-function getCovidApi() {
+function getCovidApi () {
   return axios.get(`http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?ServiceKey=${serviceKey}`)
 }
 

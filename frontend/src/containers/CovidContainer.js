@@ -5,7 +5,7 @@ import * as covidActions from '../modules/covid'
 import { CovidText } from '../components'
 
 class CovidContainer extends Component {
-  render() {
+  render () {
     const { CovidActions, confirmed } = this.props
 
     return (
@@ -13,8 +13,6 @@ class CovidContainer extends Component {
         <CovidText confirmed={confirmed} />
         <button onClick={CovidActions.getCovid}>갱신</button>
       </div>
-      
-      
     )
   }
 }

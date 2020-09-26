@@ -1,9 +1,9 @@
 import React from 'react'
-import { CovidContainer } from '../containers'
+import { CovidText } from '../components'
 
 const Home = () => {
   return (
-    <CovidContainer/>
+    <CovidText />
   )
 }
 
