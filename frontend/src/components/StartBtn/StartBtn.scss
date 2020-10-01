@@ -1,0 +1,32 @@
+.start-btn-box {
+  width: 190px;
+  height: 100px;
+  
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 6px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+
+  position: absolute;
+  left: calc((100% - 190px) / 2);
+  line-height: 100px;
+
+  .start-btn-text {
+    color: black;
+    font-size: 30px;
+    cursor: default;
+  }
+
+  &:hover {
+    background-color: greenyellow;
+  }
+
+  &:active {
+    background-color: green;
+    .start-btn-text {
+      color: white
+    }
+  }
+}

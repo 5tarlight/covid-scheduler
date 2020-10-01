@@ -1,9 +1,12 @@
-import React from 'react'
-import { CovidText } from '../components'
+import React, { Fragment } from 'react'
+import { CovidText, StartBtn } from '../components'
 
 const Home = () => {
   return (
-    <CovidText />
+    <Fragment>
+      <CovidText />
+      <StartBtn />
+    </Fragment>
   )
 }
 
