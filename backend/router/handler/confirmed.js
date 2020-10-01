@@ -15,8 +15,6 @@ module.exports.handle = (req, res, next) => {
   //  + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(date.toString()) /**/
   //  + '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent((date + 1).toString()) /**/
 
-  console.dir(url + queryParams)
-
   axios.get(url + queryParams).then(result => {
     const decide = result.data.response.body.items.item.decideCnt
     res.json({ confirmed: decide })

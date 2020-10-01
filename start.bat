@@ -1,6 +1,4 @@
-cd backend
-start yarn start
-cd ..
+start backend.bat
 cd frontend
-yarn start
-pause
+yarn build
+serve -s build
