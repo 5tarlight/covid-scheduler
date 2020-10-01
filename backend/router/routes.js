@@ -1,3 +1,3 @@
 module.exports = [
-  { url: '/api/covid/confirmed', type: 'post', handler: 'confirmed' }
+  { url: '/api/covid/confirmed', type: 'get', handler: 'confirmed' }
 ]

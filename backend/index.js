@@ -5,8 +5,8 @@ const routes = require('./router/routes')
 
 const app = express()
 
-app.use(cors())
 app.use(express.json())
+app.use(cors())
 
 routes.forEach(route => {
   app[route.type](route.url, (req, res, next) => {
