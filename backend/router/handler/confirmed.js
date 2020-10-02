@@ -1,23 +1,29 @@
 const { serviceKey } = require('./secret')
 const axios = require('axios')
 const Logger = require('korean-logger')
+const moment = require('moment')
 
 module.exports.handle = (req, res, next) => {
   const url = 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson'
 
   const now = new Date()
-  // const date = parseInt(`${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}`)
+  const today = moment(now).format('YYYYMMDD')
+  now.setDate(now.getDate() - 1)
+  const yesterday = moment(now).format('YYYYMMDD')
 
-  const queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + serviceKey + /* Service Key */
-   '&' + encodeURIComponent('ServiceKey') + '=' + encodeURIComponent('-') /**/
-  //  + '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1') /**/
-  //  + '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10') /**/
-  //  + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(date.toString()) /**/
-  //  + '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent((date + 1).toString()) /**/
+  const queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + serviceKey +
+   '&' + encodeURIComponent('ServiceKey') + '=' + encodeURIComponent('-')
+   + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(yesterday)
+   + '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(today)
 
   axios.get(url + queryParams).then(result => {
-    const decide = result.data.response.body.items.item.decideCnt
-    res.json({ confirmed: decide })
+    const items = result.data.response.body.items.item
+    const dicide = items[0].decideCnt
+    const gap = items[0].decideCnt - items[1].decideCnt
+    res.json({ 
+      newDecided: gap,
+      decided: dicide
+    })
   }).catch(err => {
     Logger.error(err.toString())
   })
