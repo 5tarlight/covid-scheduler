@@ -13,25 +13,28 @@ async function getCovidApi() {
 
 class CovidText extends Component {
   state = {
-    confirmed: 0
+    confirmed: 0,
+    gap: 0
   }
 
   render() {
     return (
-      <p className={cx('covid-text')}>확진자 {this.state.confirmed}명</p>
+      <div>
+        <p className={cx('covid-text')}>확진자 {this.state.confirmed}명</p>
+        <p className={cx('covid-new')}>(+{this.state.gap})</p>
+      </div>
     )
   }
 
   componentDidMount() {
     getCovidApi().then(res => {
-      this.setState({
-        confirmed: res.data.confirmed
-      })
-    })
-  }
+      console.dir(res.data)
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.confirmed !== nextState.confirmed
+      this.setState({
+        confirmed: res.data.decided,
+        gap: res.data.newDecided
+      })
+    })  
   }
 }
 
