@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom'
 const cx = classNames.bind(styles)
 
 const StartBtn = () => (
-  <Link to='/start'>
+  <Link to='/todo'>
     <div className={cx('start-btn-box')}>
       <p className={cx('start-btn-text')}>시작하기</p>
     </div>
   </Link>
-  
+
 )
 
 export default StartBtn

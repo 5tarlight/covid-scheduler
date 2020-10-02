@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { CovidText, StartBtn } from '../components'
 
 const Home = () => {
   return (
-    <Fragment>
+    <>
       <CovidText />
       <StartBtn />
-    </Fragment>
+    </>
   )
 }
 

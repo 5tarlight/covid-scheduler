@@ -1,13 +1,15 @@
-import React, { Fragment } from 'react'
-import { TodoTemplate } from '../components'
+import React from 'react'
+import { TodoInput, TodoTemplate } from '../components'
+import TodoList from '../components/todo/TodoList/TodoList'
 
 const Start = () => {
   return (
-    <Fragment>
+    <>
       <TodoTemplate>
-        시작
+        <TodoInput />
+        <TodoList />
       </TodoTemplate>
-    </Fragment>
+    </>
   )
 }
 
