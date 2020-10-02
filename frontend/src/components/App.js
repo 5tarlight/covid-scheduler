@@ -10,7 +10,7 @@ import Header from './header/Header/Header'
 const App = () => {
   const headerLinks = [
     { link: '/', name: '홈' },
-    { link: '/start', name: '시작하기' }
+    { link: '/todo', name: '일정관리' }
   ]
 
   return (
@@ -18,7 +18,7 @@ const App = () => {
       <Header links={headerLinks} />
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/start' component={Start} />
+        <Route exact path='/todo' component={Start} />
         <Route component={NotFound} />
       </Switch>
     </div>

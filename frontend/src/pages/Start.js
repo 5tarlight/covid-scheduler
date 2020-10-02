@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react'
+import { TodoTemplate } from '../components'
 
 const Start = () => {
   return (
     <Fragment>
-      시작하기
+      <TodoTemplate>
+        시작
+      </TodoTemplate>
     </Fragment>
   )
 }
