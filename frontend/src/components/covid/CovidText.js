@@ -28,8 +28,6 @@ class CovidText extends Component {
 
   componentDidMount() {
     getCovidApi().then(res => {
-      console.dir(res.data)
-
       this.setState({
         confirmed: res.data.decided,
         gap: res.data.newDecided
