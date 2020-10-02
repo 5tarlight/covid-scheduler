@@ -29,6 +29,10 @@ class CovidText extends Component {
       })
     })
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.confirmed === nextState.confirmed
+  }
 }
 
 export default CovidText
