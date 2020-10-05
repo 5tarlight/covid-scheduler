@@ -8,6 +8,7 @@
   text-align: center;
   display: table-cell;
   vertical-align: middle;
+  cursor: wait;
 
   position: absolute;
   left: calc((100% - 190px) / 2);
@@ -16,11 +17,11 @@
   .start-btn-text {
     color: black;
     font-size: 30px;
-    cursor: default;
   }
 
   &:hover {
     background-color: greenyellow;
+    cursor: pointer
   }
 
   &:active {

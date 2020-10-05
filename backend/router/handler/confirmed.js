@@ -18,11 +18,23 @@ module.exports.handle = (req, res, next) => {
 
   axios.get(url + queryParams).then(result => {
     const items = result.data.response.body.items.item
+
+    if (!items || !items[0] || !items[0].decideCnt) {
+      res.json({
+        newDecided: 0,
+        decided: 0,
+        isApiDown: true
+      })
+
+      return
+    }
+
     const dicide = items[0].decideCnt
     const gap = items[0].decideCnt - items[1].decideCnt
     res.json({ 
       newDecided: gap,
-      decided: dicide
+      decided: dicide,
+      isApiDown: false
     })
   }).catch(err => {
     Logger.error(err.toString())

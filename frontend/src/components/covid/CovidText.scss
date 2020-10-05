@@ -1,5 +1,5 @@
 .covid-text {
-  font-size:10rem;
+  font-size: 10rem;
   text-align: center;
   cursor: default;
 
@@ -17,5 +17,16 @@
 
   @media (max-width: 768px) {
     margin-top: -3rem;
+  }
+}
+
+.covid-error-text {
+  font-size: 5rem;
+  text-align: center;
+  cursor: default;
+  margin-bottom: 6rem;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
   }
 }

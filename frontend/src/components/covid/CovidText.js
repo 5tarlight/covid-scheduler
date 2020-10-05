@@ -14,23 +14,31 @@ async function getCovidApi() {
 class CovidText extends Component {
   state = {
     confirmed: 0,
-    gap: 0
+    gap: 0,
+    isApiDown: false
   }
 
   render() {
-    return (
-      <div>
-        <p className={cx('covid-text')}>확진자 {this.state.confirmed}명</p>
-        <p className={cx('covid-new')}>(+{this.state.gap})</p>
-      </div>
-    )
+    if (this.state.isApiDown) {
+      return (
+        <p className={cx('covid-error-text')}>확진자 정보를 가져올 수 없습니다.</p>
+      )
+    } else {
+      return (
+        <div>
+          <p className={cx('covid-text')}>확진자 {this.state.confirmed}명</p>
+          <p className={cx('covid-new')}>(+{this.state.gap})</p>
+        </div>
+      )
+    }
   }
 
   componentDidMount() {
     getCovidApi().then(res => {
       this.setState({
         confirmed: res.data.decided,
-        gap: res.data.newDecided
+        gap: res.data.newDecided,
+        isApiDown: res.data.isApiDown
       })
     })  
   }
