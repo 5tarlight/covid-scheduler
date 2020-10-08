@@ -7,28 +7,28 @@ class TodoList extends Component {
   }
 
   renderTodo(todo, onToggle, onRemove) {
-    return todo.then(t => {
-      const result = t.map(
-        todo => {
-          return (
-            <TodoItem
-              key={todo.get('id')}
-              done={todo.get('done')}
-              onToggle={() => onToggle(todo.get('id'))}
-              onRemove={() => onRemove(todo.get('id'))}
-            >
-              {todo.get('text')}
-            </TodoItem>
-          )
-        }
-      )
+    console.dir(todo)
 
-      this.setState({
-        ...this.state,
-        todoList: result
-      })
-      return result
+    const result = todo.map(
+      todo => {
+        return (
+          <TodoItem
+            key={todo.get('id')}
+            done={todo.get('done')}
+            onToggle={() => onToggle(todo.get('id'))}
+            onRemove={() => onRemove(todo.get('id'))}
+          >
+            {todo.get('text')}
+          </TodoItem>
+        )
+      }
+    )
+
+    this.setState({
+      ...this.state,
+      todoList: result
     })
+    return result
   }
 
   render () {
@@ -39,6 +39,10 @@ class TodoList extends Component {
       </div>
     )
   }
+
+  // shouldComponentUpdate(prevProps, prevState) {
+  //   return this.state !== prevState
+  // }
 
   componentDidMount() {
     const { todo, onToggle, onRemove } = this.props

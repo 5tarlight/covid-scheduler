@@ -2,11 +2,14 @@ import { Map, List } from 'immutable'
 import { handleActions, createAction } from 'redux-actions'
 import { server } from './secret'
 import axios from 'axios'
+import { pender } from 'redux-pender'
 
+const LOAD = 'todo/LOAD'
 const INSERT = 'todo/INSERT'
 const TOGGLE = 'todo/TOGGLE'
 const REMOVE = 'todo/REMOVE'
 
+export const load = createAction(LOAD, getTodoList)
 export const insert = createAction(INSERT)
 export const toggle = createAction(TOGGLE)
 export const remove = createAction(REMOVE)
@@ -24,16 +27,28 @@ let initialState = List([
   })
 ])
 
-async function updateState() {
-  const res = await axios.get('http://' + server + '/api/todo/getlist')
-  const list = []
-  res.data.todo.forEach(t => {
-    list.push(Map(t))
-  })
-  return List(list)
+function getTodoList() {
+  return axios.get('http://' + server + '/api/todo/getlist')
+  // const list = []
+  // res.data.todo.forEach(t => {
+  //   list.push(Map(t))
+  // })
+  // return List(list)
 }
 
 export default handleActions({
+  ...pender({
+    type: LOAD,
+    onSuccess: (state, action) => {
+      const { todos } = action.payload.data
+      const list = []
+      todos.forEach(todo => {
+        list.push(todo)
+      })
+
+      return List(list)
+    }
+  }),
   [INSERT]: (state, action) => {
     const { id, text, done } = action.payload
 
@@ -58,4 +73,4 @@ export default handleActions({
     const index = state.findIndex(todo => todo.get('id') === id)
     return state.delete(index)
   }
-}, updateState())
+}, initialState)

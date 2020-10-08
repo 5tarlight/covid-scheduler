@@ -15,6 +15,11 @@ class TodoListContainer extends Component {
     TodoActions.remove(id)
   }
 
+  componentDidMount() {
+    const { TodoActions } = this.props
+    TodoActions.load()
+  }
+
   render() {
     const { todo } = this.props
 
@@ -30,7 +35,9 @@ class TodoListContainer extends Component {
 
 export default connect(
   state => ({
-    todo: state.todo
+    todo: state.todo,
+    loadingTodo: state.pender.pending['todo/LOAD'],
+    loadingTodoError: state.pender.failure['todo/LOAD']
   }),
   dispatch => ({
     TodoActions: bindActionCreators(todoActions, dispatch)
