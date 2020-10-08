@@ -75,11 +75,23 @@ export default handleActions({
     const { payload: id } = action
     const index = state.findIndex(todo => todo.get('id') === id)
 
-    return state.updateIn([index, 'done'], done => !done)
+    const updated = state.updateIn([index, 'done'], done => !done)
+    
+    axios.post(`http://${server}/api/todo/savelist`, {
+      todo: updated
+    })
+
+    return updated
   },
   [REMOVE]: (state, action) => {
     const { payload: id } = action
     const index = state.findIndex(todo => todo.get('id') === id)
-    return state.delete(index)
+    const updated = state.delete(index)
+
+    axios.post(`http://${server}/api/todo/savelist`, {
+      todo: updated
+    })
+
+    return updated
   }
 }, initialState)
