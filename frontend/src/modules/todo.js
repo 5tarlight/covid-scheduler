@@ -41,9 +41,10 @@ export default handleActions({
     type: LOAD,
     onSuccess: (state, action) => {
       const { todos } = action.payload.data
+      console.dir(todos)
       const list = []
       todos.forEach(todo => {
-        list.push(todo)
+        list.push(Map(todo))
       })
 
       return List(list)
