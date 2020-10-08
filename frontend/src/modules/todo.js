@@ -16,8 +16,6 @@ export const toggle = createAction(TOGGLE)
 export const remove = createAction(REMOVE)
 export const getId = createAction(GET_ID)
 
-let id = 0
-
 let initialState = List([
   Map({
     id: 0,
@@ -45,7 +43,6 @@ function getMax(list) {
   list.forEach(e => {
     if (e.get('id') > m) m = e.get('id')
   })
-
   return m
 }
 
@@ -54,12 +51,12 @@ export default handleActions({
     type: LOAD,
     onSuccess: (state, action) => {
       const { todos } = action.payload.data
+      console.dir(todos)
       const list = []
       todos.forEach(todo => {
         list.push(Map(todo))
       })
 
-      id = getMax(list)
       return List(list)
     }
   }),
