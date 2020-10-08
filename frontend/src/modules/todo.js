@@ -49,18 +49,26 @@ export default handleActions({
       return List(list)
     }
   }),
+  // ...pender({
+  //   type: INSERT,
+  //   onSuccess: (state, action) => {
+  //     
+  //   }
+  // }),
   [INSERT]: (state, action) => {
     const { id, text, done } = action.payload
 
-    state.then(r => {
-      r.push(Map({
-        id,
-        text,
-        done
-      }))
+    const updated = state.push(Map({
+      id,
+      text,
+      done
+    }))
+
+    axios.post(`http://${server}/api/todo/savelist`, {
+      todo: updated
     })
-    
-    return state
+
+    return updated
   },
   [TOGGLE]: (state, action) => {
     const { payload: id } = action

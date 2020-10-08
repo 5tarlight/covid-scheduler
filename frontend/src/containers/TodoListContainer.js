@@ -37,7 +37,7 @@ export default connect(
   state => ({
     todo: state.todo,
     loadingTodo: state.pender.pending['todo/LOAD'],
-    loadingTodoError: state.pender.failure['todo/LOAD']
+    loadingTodoError: state.pender.failure['todo/LOAD'],
   }),
   dispatch => ({
     TodoActions: bindActionCreators(todoActions, dispatch)

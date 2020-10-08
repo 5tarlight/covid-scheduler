@@ -45,10 +45,12 @@ class TodoInputContainer extends Component {
 
 export default connect(
   state => ({
-    value: state.input.get('value')
+    value: state.input.get('value'),
+    // waitingInsertion: state.pender.pending['todo/INSERT'],
+    // insertionError: state.pender.failure['todo/INSERT']
   }),
   dispatch => ({
     InputActions: bindActionCreators(inputActions, dispatch),
-    TodoActions: bindActionCreators(todoActions, dispatch)
+    TodoActions: bindActionCreators(todoActions, dispatch),
   })
 )(TodoInputContainer)
