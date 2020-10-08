@@ -1,4 +1,9 @@
+const fs = require('fs')
+
 module.exports.handle = (req, res, next) => {
+  const ip = req.ip
+  const path = `${__dirname}\\todo\\${ip.split(':').join('')}.json`
+
   res.json({
     todo: [
       {
