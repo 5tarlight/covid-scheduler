@@ -15,7 +15,12 @@ module.exports.handle = (req, res, next) => {
       fs.unlinkSync(path)
     }
 
-    fs.writeFileSync(path, JSON.stringify(todo))
+    const data = JSON.stringify({
+      todos: todo.todos,
+      id: todo.id
+    })
+
+    fs.writeFileSync(path, data)
   } catch (err) {
     err(err)
   }

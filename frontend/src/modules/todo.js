@@ -8,11 +8,15 @@ const LOAD = 'todo/LOAD'
 const INSERT = 'todo/INSERT'
 const TOGGLE = 'todo/TOGGLE'
 const REMOVE = 'todo/REMOVE'
+const GET_ID = 'todo/GET_ID'
 
 export const load = createAction(LOAD, getTodoList)
 export const insert = createAction(INSERT)
 export const toggle = createAction(TOGGLE)
 export const remove = createAction(REMOVE)
+export const getId = createAction(GET_ID)
+
+let id = 0
 
 let initialState = List([
   Map({
@@ -36,28 +40,35 @@ function getTodoList() {
   // return List(list)
 }
 
+function getMax(list) {
+  let m = -1
+  list.forEach(e => {
+    if (e.get('id') > m) m = e.get('id')
+  })
+
+  return m
+}
+
 export default handleActions({
   ...pender({
     type: LOAD,
     onSuccess: (state, action) => {
       const { todos } = action.payload.data
-      console.dir(todos)
       const list = []
       todos.forEach(todo => {
         list.push(Map(todo))
       })
 
+      id = getMax(list)
       return List(list)
     }
   }),
-  // ...pender({
-  //   type: INSERT,
-  //   onSuccess: (state, action) => {
-  //     
-  //   }
-  // }),
+  [GET_ID]: (state, action) => {
+
+  },
   [INSERT]: (state, action) => {
-    const { id, text, done } = action.payload
+    const { text, done } = action.payload
+    const id = getMax(state) + 1
 
     const updated = state.push(Map({
       id,
