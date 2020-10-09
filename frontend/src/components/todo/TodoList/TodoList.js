@@ -27,6 +27,10 @@ class TodoList extends Component {
       </div>
     )
   }
+
+  shouldComponentUpdate(prevProp, prevState) {
+    return prevProp.todo !== this.props.todo
+  }
 }
 
 export default TodoList
