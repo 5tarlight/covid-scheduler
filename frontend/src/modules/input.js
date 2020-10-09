@@ -2,7 +2,6 @@ import { Map } from 'immutable'
 import { handleActions, createAction } from 'redux-actions'
 
 const SET_INPUT = 'input/SET_INPUT'
-const GET_ID = 'input/GET_ID'
 
 export const setInput = createAction(SET_INPUT)
 
