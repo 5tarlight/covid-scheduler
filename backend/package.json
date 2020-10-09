@@ -9,5 +9,11 @@
   },
   "scripts": {
     "start": "node ."
-  }
+  },
+  "name": "covid-scheduler-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "YEAHx4 <developerstarlight@gmail.com>",
+  "license": "MIT",
+  "private": false
 }
