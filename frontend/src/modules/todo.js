@@ -8,13 +8,14 @@ const LOAD = 'todo/LOAD'
 const INSERT = 'todo/INSERT'
 const TOGGLE = 'todo/TOGGLE'
 const REMOVE = 'todo/REMOVE'
-const GET_ID = 'todo/GET_ID'
+const MODIFY = 'todo/MODIFY'
 
 export const load = createAction(LOAD, getTodoList)
 export const insert = createAction(INSERT)
 export const toggle = createAction(TOGGLE)
 export const remove = createAction(REMOVE)
-export const getId = createAction(GET_ID)
+export const modify = createAction(MODIFY)
+
 
 let initialState = List([
   Map({
@@ -31,11 +32,6 @@ let initialState = List([
 
 function getTodoList() {
   return axios.get('http://' + server + '/api/todo/getlist')
-  // const list = []
-  // res.data.todo.forEach(t => {
-  //   list.push(Map(t))
-  // })
-  // return List(list)
 }
 
 function getMax(list) {
@@ -51,7 +47,6 @@ export default handleActions({
     type: LOAD,
     onSuccess: (state, action) => {
       const { todos } = action.payload.data
-      console.dir(todos)
       const list = []
       todos.forEach(todo => {
         list.push(Map(todo))
@@ -60,9 +55,6 @@ export default handleActions({
       return List(list)
     }
   }),
-  [GET_ID]: (state, action) => {
-
-  },
   [INSERT]: (state, action) => {
     const { text, done } = action.payload
     const id = getMax(state) + 1
@@ -100,6 +92,20 @@ export default handleActions({
       todo: updated
     })
 
+    return updated
+  },
+  [MODIFY]: (state, action) => {
+    const { payload: id } = action
+    const index = state.findIndex(todo => todo.get('id') === id)
+    const modified = prompt('수정')
+
+    if(!(modified && modified.trim())) return state // if input value is null
+    
+    const updated = state.updateIn([index, 'text'], text => modified)
+    
+    axios.post(`http://${server}/api/todo/savelist`, {
+      todo: updated
+    })
     return updated
   }
 }, initialState)

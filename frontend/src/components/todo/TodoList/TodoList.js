@@ -3,7 +3,7 @@ import { TodoItem } from '../../'
 
 class TodoList extends Component {
   render () {
-    const { todo, onToggle, onRemove } = this.props
+    const { todo, onToggle, onRemove, onModify } = this.props
 
     const result = todo.map(
       t => {
@@ -13,6 +13,7 @@ class TodoList extends Component {
             done={t.get('done')}
             onToggle={() => onToggle(t.get('id'))}
             onRemove={() => onRemove(t.get('id'))}
+            onModify={() => onModify(t.get('id'))}
           >
             {t.get('text')}
           </TodoItem>

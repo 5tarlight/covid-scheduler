@@ -15,6 +15,11 @@ class TodoListContainer extends Component {
     TodoActions.remove(id)
   }
 
+  handleModify = id => {
+    const { TodoActions } = this.props
+    TodoActions.modify(id)
+  }
+
   componentDidMount() {
     const { TodoActions } = this.props
     TodoActions.load()
@@ -28,6 +33,7 @@ class TodoListContainer extends Component {
         todo={todo}
         onToggle={this.handleToggle}
         onRemove={this.handleRemove}
+        onModify={this.handleModify}
       />
     )
   }
