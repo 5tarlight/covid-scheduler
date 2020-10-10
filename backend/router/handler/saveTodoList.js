@@ -8,7 +8,7 @@ function err(error) {
 module.exports.handle = (req, res, next) => {
   const ip = req.ip
   const todo = req.body.todo
-  const path = `${__dirname}\\todo\\${ip.split(':').join('')}.json`
+  const path = `${__dirname}\\todoData\\${ip.split(':').join('')}.json`
 
   try {
     if (fs.existsSync(path)) {
