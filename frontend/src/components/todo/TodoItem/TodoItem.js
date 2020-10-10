@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './TodoItem.scss'
 import classNames from 'classnames/bind'
-import { ModifyModal } from '../../'
+// import { ModifyModal } from '../../'
 
 const cx = classNames.bind(styles)
 
