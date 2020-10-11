@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import deleteStyle from './ModifyModal.scss'
 import classNames from 'classnames/bind'
 
@@ -31,26 +31,33 @@ const ModifyModal = ({ onModify }) => {
           <input autoFocus className={cx('modify-input')} ref={ref => modifyValue = ref} onKeyPress={handleKeyPress} />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={e => {
-            e.stopPropagation()
-            handleClose()
-          }}>
+          <Button
+            variant='secondary' onClick={e => {
+              e.stopPropagation()
+              handleClose()
+            }}
+          >
             취소
           </Button>
-          <Button variant="primary" onClick={e => {
-            e.stopPropagation()
-            onModify(modifyValue.value.trim())
-            handleClose()
-          }}>
+          <Button
+            variant='primary' onClick={e => {
+              e.stopPropagation()
+              onModify(modifyValue.value.trim())
+              handleClose()
+            }}
+          >
             적용
           </Button>
         </Modal.Footer>
       </Modal>
 
-      <div className={(cx('delete'))} onClick={e => {
-        e.stopPropagation()
-        handleShow()
-      }}>[수정]</div>
+      <div
+        className={(cx('delete'))} onClick={e => {
+          e.stopPropagation()
+          handleShow()
+        }}
+      >[수정]
+      </div>
     </>
   )
 }

@@ -12,9 +12,9 @@ module.exports.handle = (req, res, next) => {
   const yesterday = moment(now).format('YYYYMMDD')
 
   const queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + serviceKey +
-   '&' + encodeURIComponent('ServiceKey') + '=' + encodeURIComponent('-')
-   + '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(yesterday)
-   + '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(today)
+   '&' + encodeURIComponent('ServiceKey') + '=' + encodeURIComponent('-') +
+   '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(yesterday) +
+   '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(today)
 
   axios.get(url + queryParams).then(result => {
     const items = result.data.response.body.items.item
@@ -31,7 +31,7 @@ module.exports.handle = (req, res, next) => {
 
     const dicide = items[0].decideCnt
     const gap = items[0].decideCnt - items[1].decideCnt
-    res.json({ 
+    res.json({
       newDecided: gap,
       decided: dicide,
       isApiDown: false

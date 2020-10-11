@@ -16,8 +16,7 @@ export const toggle = createAction(TOGGLE)
 export const remove = createAction(REMOVE)
 export const modify = createAction(MODIFY)
 
-
-let initialState = List([
+const initialState = List([
   Map({
     id: 0,
     text: '리액트 공부하기',
@@ -30,11 +29,11 @@ let initialState = List([
   })
 ])
 
-function getTodoList() {
+function getTodoList () {
   return axios.get('http://' + server + '/api/todo/getlist')
 }
 
-function getMax(list) {
+function getMax (list) {
   let m = -1
   list.forEach(e => {
     if (e.get('id') > m) m = e.get('id')
@@ -76,7 +75,7 @@ export default handleActions({
     const index = state.findIndex(todo => todo.get('id') === id)
 
     const updated = state.updateIn([index, 'done'], done => !done)
-    
+
     axios.post(`http://${server}/api/todo/savelist`, {
       todo: updated
     })
@@ -98,10 +97,10 @@ export default handleActions({
     const { id, value } = action.payload
     const index = state.findIndex(todo => todo.get('id') === id)
 
-    if(!(value && value.trim())) return state // if input value is null
-    
+    if (!(value && value.trim())) return state // if input value is null
+
     const updated = state.updateIn([index, 'text'], text => value)
-    
+
     axios.post(`http://${server}/api/todo/savelist`, {
       todo: updated
     })

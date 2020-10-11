@@ -28,7 +28,7 @@ class TodoList extends Component {
     )
   }
 
-  shouldComponentUpdate(prevProp, prevState) {
+  shouldComponentUpdate (prevProp, prevState) {
     return prevProp.todo !== this.props.todo
   }
 }

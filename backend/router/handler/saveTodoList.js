@@ -1,10 +1,6 @@
 const fs = require('fs')
 const Logger = require('korean-logger')
 
-function err(error) {
-  if (error) Logger.error(error.toString())
-}
-
 module.exports.handle = (req, res, next) => {
   const ip = req.ip
   const todo = req.body.todo
@@ -19,7 +15,7 @@ module.exports.handle = (req, res, next) => {
 
     fs.writeFileSync(path, data)
   } catch (err) {
-    err(err)
+    Logger.error(err)
   }
 
   res.json({
