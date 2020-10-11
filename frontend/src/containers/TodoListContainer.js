@@ -15,9 +15,11 @@ class TodoListContainer extends Component {
     TodoActions.remove(id)
   }
 
-  handleModify = id => {
+  handleModify = (id, value) => {
     const { TodoActions } = this.props
-    TodoActions.modify(id)
+    TodoActions.modify({
+      id, value
+    })
   }
 
   componentDidMount() {

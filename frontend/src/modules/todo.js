@@ -95,13 +95,12 @@ export default handleActions({
     return updated
   },
   [MODIFY]: (state, action) => {
-    const { payload: id } = action
+    const { id, value } = action.payload
     const index = state.findIndex(todo => todo.get('id') === id)
-    const modified = prompt('수정')
 
-    if(!(modified && modified.trim())) return state // if input value is null
+    if(!(value && value.trim())) return state // if input value is null
     
-    const updated = state.updateIn([index, 'text'], text => modified)
+    const updated = state.updateIn([index, 'text'], text => value)
     
     axios.post(`http://${server}/api/todo/savelist`, {
       todo: updated

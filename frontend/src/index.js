@@ -13,11 +13,9 @@ const store = createStore(modules, applyMiddleware(
 )
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Root />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Root />
+  </Provider>,
   document.getElementById('root')
 )
 

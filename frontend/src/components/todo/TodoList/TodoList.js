@@ -13,7 +13,7 @@ class TodoList extends Component {
             done={t.get('done')}
             onToggle={() => onToggle(t.get('id'))}
             onRemove={() => onRemove(t.get('id'))}
-            onModify={() => onModify(t.get('id'))}
+            onModify={value => onModify(t.get('id'), value)}
           >
             {t.get('text')}
           </TodoItem>

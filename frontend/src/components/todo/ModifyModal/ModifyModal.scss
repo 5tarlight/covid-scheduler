@@ -1,0 +1,16 @@
+@import '../../../styles/utils.scss';
+
+.delete {
+  margin-left: 0.5rem;
+  color: $oc-red-7;
+  font-size: 0.8rem;
+
+  &:hover {
+    color: $oc-red-5;
+    text-decoration: underline;
+  }
+}
+
+.modify-input {
+  width: 100%;
+}

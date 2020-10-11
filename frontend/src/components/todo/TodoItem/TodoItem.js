@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './TodoItem.scss'
 import classNames from 'classnames/bind'
-// import { ModifyModal } from '../../'
+import { ModifyModal } from '../../'
 
 const cx = classNames.bind(styles)
 
@@ -14,11 +14,11 @@ class TodoItem extends Component {
         <input className={cx('tick')} type='checkbox' checked={done} readOnly />
         <div className={cx('text', { done })}>{children}</div>
         
-        {/* <ModifyModal onModify={onModify} /> */}
-        <div className={(cx('delete'))} onClick={e => {
+        <ModifyModal onModify={onModify} />
+        {/* <div className={(cx('delete'))} onClick={e => {
           e.stopPropagation()
           onModify()
-        }}>[수정]</div>
+        }}>[수정]</div> */}
 
         <div className={cx('delete')} onClick={e => {
           e.stopPropagation()
