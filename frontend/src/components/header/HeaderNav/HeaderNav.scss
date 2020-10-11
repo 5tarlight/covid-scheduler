@@ -1,4 +1,8 @@
 .header-nav {
   color: white;
-  padding-right: 5px; 
+  padding-right: 5px;
+
+  &:hover {
+    color: white;
+  }
 }
