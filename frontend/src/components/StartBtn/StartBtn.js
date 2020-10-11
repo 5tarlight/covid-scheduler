@@ -11,7 +11,6 @@ const StartBtn = () => (
       <p className={cx('start-btn-text')}>시작하기</p>
     </div>
   </Link>
-
 )
 
 export default StartBtn
