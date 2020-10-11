@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import {
   Home,
   NotFound,
+  Rearange,
   Start
 } from '../pages'
 import Header from './header/Header/Header'
@@ -19,6 +20,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/todo' component={Start} />
+        <Route exact path='/todo/rearange' component={Rearange} />
         <Route component={NotFound} />
       </Switch>
     </div>

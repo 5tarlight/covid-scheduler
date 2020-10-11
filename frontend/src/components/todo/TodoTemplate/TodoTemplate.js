@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './TodoTemplate.scss'
 import classNames from 'classnames/bind'
 
@@ -8,6 +9,7 @@ const TodoTemplate = ({ children }) => {
   return (
     <div className={(cx('page-template'))}>
       <h1>일정 관리</h1>
+
       <div className={cx('content')}>
         {children}
       </div>

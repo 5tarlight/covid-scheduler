@@ -1,0 +1,27 @@
+@import '../../styles/utils.scss';
+
+.rerange-btn {
+  width: 5rem;
+  height: 2rem;
+  margin-left: 1rem;
+  border: 1px solid $oc-green-7;
+  color: $oc-green-7;
+  font-weight: 500;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+
+  &:hover {
+    background: $oc-green-7;
+    color: white;
+  }
+
+  &:active {
+    background: $oc-green-8;
+  }
+}
