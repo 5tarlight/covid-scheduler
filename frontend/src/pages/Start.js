@@ -1,6 +1,6 @@
 import React from 'react'
 import { TodoInputContainer, TodoListContainer } from '../containers'
-import { TodoTemplate, RearangeBtn } from '../components'
+import { TodoTemplate } from '../components'
 
 const Start = () => {
   return (
@@ -9,7 +9,7 @@ const Start = () => {
         <TodoInputContainer />
         <TodoListContainer />
       </TodoTemplate>
-      <RearangeBtn />
+      {/* <RearangeBtn /> */}
     </>
   )
 }

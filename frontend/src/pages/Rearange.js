@@ -1,9 +1,10 @@
 import React from 'react'
 import { TodoTemplate } from '../components'
+import { RearangeContainer } from '../containers'
 
 const Rearange = () => (
   <TodoTemplate>
-    재정렬
+    <RearangeContainer />
   </TodoTemplate>
 )
 
