@@ -10,9 +10,9 @@ class TodoItem extends Component {
     const { done, children, onToggle, onRemove, onModify } = this.props
 
     return (
-      <div className={cx('todo-item')} onClick={onToggle}>
+      <div className={cx('todo-item', 'no-drag')} onClick={onToggle}>
         <input className={cx('tick')} type='checkbox' checked={done} readOnly />
-        <div className={cx('text', { done })}>{children}</div>
+        <div className={cx('text', 'no-drag', { done })}>{children}</div>
 
         <ModifyModal onModify={onModify} />
         {/* <div className={(cx('delete'))} onClick={e => {

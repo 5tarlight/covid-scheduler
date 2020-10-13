@@ -7,3 +7,13 @@ $theme-color-4: #c2c2c2;
 $theme-color-5: #e0e0e0;
 $theme-color-6: #f2f2f2;
 $theme-color-7: #ffffff;
+
+.no-drag {
+  flex: 1;
+  word-break: break-all;
+  -ms-user-select: none; 
+  -moz-user-select: -moz-none; 
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select:none;
+}
