@@ -6,20 +6,19 @@ class RearangeList extends Component {
   render() {
     const { todo } = this.props
 
-    const result = todo.map(t => {
-      console.log(t.get('id'), t.get('done'), t.get('text'))
+    const result = todo.toJS().map(t => {
       return (
         <RearangeItem
-          key={t.get('id')}
-          done={t.get('done')}
+          key={t.id}
+          done={t.done}
         >
-          {t.get('text')}
+          {t.text}
         </RearangeItem>
       )
     })
-    
+
     return (
-      {result}
+      result
     )
   }
 }
