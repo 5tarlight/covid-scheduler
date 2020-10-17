@@ -11,6 +11,11 @@ class TodoItem extends Component {
 
     return (
       <div className={cx('todo-item', 'no-drag')} onClick={onToggle}>
+        <div className={cx('arrange-box')}>
+          <img src={'/arrow-up.png'} className={'arrow-up'} alt={'올리기'}/>
+          <img src={'/arrow-down.png'} className={'arrow-down'} alt={'내리기'} />
+        </div>
+
         <input className={cx('tick')} type='checkbox' checked={done} readOnly />
         <div className={cx('text', 'no-drag', { done })}>{children}</div>
 

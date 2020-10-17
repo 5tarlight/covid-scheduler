@@ -36,6 +36,29 @@
   &:hover {
     background: $oc-gray-1;
   }
+
+  .arrow-up {
+    width: 15px;
+    opacity: 50%;
+
+    &:hover{
+      opacity: 100%;
+    }
+  }
+
+  .arrow-down {
+    width: 15px;
+    opacity: 50%;
+
+    &:hover {
+      opacity: 100%;
+    }
+  }
+
+  .arrange-box {
+    margin-left: -5px;
+    margin-right: 5px;
+  }
 }
 
 .todo-item + .todo-item {

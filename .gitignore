@@ -106,3 +106,5 @@ dist
 secret.js
 build
 todoData
+codeStyles
+.idea
