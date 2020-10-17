@@ -3,7 +3,7 @@ import { TodoItem } from '../../'
 
 class TodoList extends Component {
   render () {
-    const { todo, onToggle, onRemove, onModify } = this.props
+    const { todo, onToggle, onRemove, onModify, onMoveUp, onMoveDown } = this.props
 
     const result = todo.map(
       t => {
@@ -14,6 +14,8 @@ class TodoList extends Component {
             onToggle={() => onToggle(t.get('id'))}
             onRemove={() => onRemove(t.get('id'))}
             onModify={value => onModify(t.get('id'), value)}
+            onMoveUp={() => onMoveUp(t.get('id'))}
+            onMoveDown={() => onMoveDown(t.get('id'))}
           >
             {t.get('text')}
           </TodoItem>
@@ -26,10 +28,6 @@ class TodoList extends Component {
         {result}
       </div>
     )
-  }
-
-  shouldComponentUpdate (prevProp, prevState) {
-    return prevProp.todo !== this.props.todo
   }
 }
 

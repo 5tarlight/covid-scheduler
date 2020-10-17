@@ -9,12 +9,16 @@ const INSERT = 'todo/INSERT'
 const TOGGLE = 'todo/TOGGLE'
 const REMOVE = 'todo/REMOVE'
 const MODIFY = 'todo/MODIFY'
+const MOVE_UP = 'todo/UP'
+const MOVE_DOWN = 'todo/DOWN'
 
 export const load = createAction(LOAD, getTodoList)
 export const insert = createAction(INSERT)
 export const toggle = createAction(TOGGLE)
 export const remove = createAction(REMOVE)
 export const modify = createAction(MODIFY)
+export const moveUp = createAction(MOVE_UP)
+export const moveDown = createAction(MOVE_DOWN)
 
 const initialState = List([
   Map({
@@ -49,6 +53,10 @@ export default handleActions({
       const list = []
       todos.forEach(todo => {
         list.push(Map(todo))
+      })
+
+      list.sort((a, b) => {
+        return a.get('id') - b.get('id')
       })
 
       return List(list)
@@ -104,6 +112,43 @@ export default handleActions({
     axios.post(`http://${server}/api/todo/savelist`, {
       todo: updated
     })
+    return updated
+  },
+  [MOVE_UP]: (state, action) => {
+    const { payload: id } = action
+    const index = state.findIndex(todo => todo.get('id') === id)
+
+    if (index === 0) return state
+
+    const prevId = state.get(index - 1).get('id')
+
+    const updated = state.updateIn([index, 'id'], id => prevId).updateIn([prevId, 'id'], id => index)
+      .sort((a, b) => {
+        return a.get('id') - b.get('id')
+      })
+
+    axios.post(`http://${server}/api/todo/savelist`, {
+      todo: updated
+    })
+    return updated
+  },
+  [MOVE_DOWN]: (state, action) => {
+    const { payload: id } = action
+    const index = state.findIndex(todo => todo.get('id') === id)
+
+    if (index === state.size - 1) return state
+
+    const nextId = state.get(index + 1).get('id')
+
+    const updated = state.updateIn([index, 'id'], id => nextId).updateIn([nextId, 'id'], id => index)
+      .sort((a, b) => {
+        return a.get('id') - b.get('id')
+      })
+
+    axios.post(`http://${server}/api/todo/savelist`, {
+      todo: updated
+    })
+
     return updated
   }
 }, initialState)

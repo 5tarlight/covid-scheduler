@@ -7,13 +7,26 @@ const cx = classNames.bind(styles)
 
 class TodoItem extends Component {
   render () {
-    const { done, children, onToggle, onRemove, onModify } = this.props
+    const {
+      done,
+      children,
+      onToggle,
+      onRemove,
+      onModify,
+      onMoveUp,
+      onMoveDown
+    } = this.props
+
+    const handleClick = (e, handler) => {
+      e.stopPropagation();
+      handler();
+    }
 
     return (
       <div className={cx('todo-item', 'no-drag')} onClick={onToggle}>
         <div className={cx('arrange-box')}>
-          <img src={'/arrow-up.png'} className={'arrow-up'} alt={'올리기'}/>
-          <img src={'/arrow-down.png'} className={'arrow-down'} alt={'내리기'} />
+          <img src={'/arrow-up.png'} className={'arrow-up'} alt={'올리기'} onClick={e => handleClick(e, onMoveUp)}/>
+          <img src={'/arrow-down.png'} className={'arrow-down'} alt={'내리기'} onClick={e => handleClick(e, onMoveDown)}/>
         </div>
 
         <input className={cx('tick')} type='checkbox' checked={done} readOnly />
@@ -26,10 +39,7 @@ class TodoItem extends Component {
         }}>[수정]</div> */}
 
         <div
-          className={cx('delete')} onClick={e => {
-            e.stopPropagation()
-            onRemove()
-          }}
+          className={cx('delete')} onClick={e=> handleClick(e, onRemove)}
         >[지우기]
         </div>
       </div>

@@ -22,6 +22,16 @@ class TodoListContainer extends Component {
     })
   }
 
+  handleMoveUp = id => {
+    const { TodoActions } = this.props
+    TodoActions.moveUp(id)
+  }
+
+  handleMoveDown = id => {
+    const { TodoActions } = this.props
+    TodoActions.moveDown(id)
+  }
+
   componentDidMount() {
     const { TodoActions } = this.props
     TodoActions.load()
@@ -36,6 +46,8 @@ class TodoListContainer extends Component {
         onToggle={this.handleToggle}
         onRemove={this.handleRemove}
         onModify={this.handleModify}
+        onMoveUp={this.handleMoveUp}
+        onMoveDown={this.handleMoveDown}
       />
     )
   }
