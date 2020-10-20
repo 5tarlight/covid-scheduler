@@ -6,12 +6,22 @@ module.exports.handle = (req, res, next) => {
     {
       id: 0,
       text: '리액트 공부하기',
-      done: true
+      done: true,
+      detail: {
+        detail: '',
+        place: '',
+        loc: ''
+      }
     },
     {
       id: 1,
       text: '저장기능 만들기',
-      done: false
+      done: false,
+      detail: {
+        detail: '',
+        place: '',
+        loc: ''
+      }
     }
   ]
 

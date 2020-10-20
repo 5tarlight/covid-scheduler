@@ -15,10 +15,12 @@ class TodoListContainer extends Component {
     TodoActions.remove(id)
   }
 
-  handleModify = (id, value) => {
+  handleModify = (id, text, detail) => {
     const { TodoActions } = this.props
     TodoActions.modify({
-      id, value
+      id,
+      text,
+      detail
     })
   }
 

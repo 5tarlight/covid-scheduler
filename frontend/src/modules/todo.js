@@ -24,12 +24,22 @@ const initialState = List([
   Map({
     id: 0,
     text: '리액트 공부하기',
-    done: true
+    done: true,
+    detail: {
+      detail: '',
+      place: '',
+      loc: ''
+    }
   }),
   Map({
     id: 1,
     text: '컴포넌트 스타일링 해보기',
-    done: false
+    done: false,detail: {
+      detail: '',
+      place: '',
+      loc: ''
+    }
+
   })
 ])
 
@@ -63,13 +73,18 @@ export default handleActions({
     }
   }),
   [INSERT]: (state, action) => {
-    const { text, done } = action.payload
+    const { text ,done } = action.payload
     const id = getMax(state) + 1
 
     const updated = state.push(Map({
       id,
       text,
-      done
+      done,
+      detail: Map({
+        detail: '',
+        place: '',
+        loc: ''
+      })
     }))
 
     axios.post(`http://${server}/api/todo/savelist`, {
@@ -102,12 +117,12 @@ export default handleActions({
     return updated
   },
   [MODIFY]: (state, action) => {
-    const { id, value } = action.payload
+    const { id, text, detail } = action.payload
     const index = state.findIndex(todo => todo.get('id') === id)
 
-    if (!(value && value.trim())) return state // if input value is null
+    if (!(text && text.trim())) return state // if value of title is null return
 
-    const updated = state.updateIn([index, 'text'], text => value)
+    const updated = state.updateIn([index, 'text'], t => text).updateIn([index, 'detail'], d => detail)
 
     axios.post(`http://${server}/api/todo/savelist`, {
       todo: updated

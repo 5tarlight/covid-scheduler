@@ -7,7 +7,7 @@ const cx = classNames.bind(deleteStyle)
 
 class ModifyModal extends Component {
   render() {
-    const { onModify } = this.props
+    const { onModify, text, detail, loc, place } = this.props
     /*
       #refs
       this.modal
@@ -18,6 +18,11 @@ class ModifyModal extends Component {
      */
 
     const handleShow = () => {
+      this.title.value = text
+      this.detail.value = detail
+      this.place.value = place
+      this.loc.value = loc
+
       this.modal.style.display = 'flex'
     }
 
@@ -30,14 +35,13 @@ class ModifyModal extends Component {
         sendModifyRequest()
         handleHide()
       } else if (e.keyCode === 27) { // Escape
-        console.log(e.keyCode)
         handleHide()
       }
     }
 
     const sendModifyRequest = () => {
-      onModify(this.title.value.trim())
-      // onModify(objectify())
+      // onModify(this.title.value.trim())
+      onModify(this.title.value.trim(), objectify())
     }
 
     const sendAndHideRequest = () => {
@@ -47,7 +51,6 @@ class ModifyModal extends Component {
 
     const objectify = () => {
       return {
-        title: this.title.value.trim(),
         detail: this.detail.value.trim(),
         place: this.place.value.trim(),
         loc: this.loc.value.trim()

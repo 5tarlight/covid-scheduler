@@ -10,6 +10,7 @@ class TodoItem extends Component {
   render () {
     const {
       done,
+      detail,
       children,
       onToggle,
       onRemove,
@@ -33,7 +34,13 @@ class TodoItem extends Component {
         <input className={cx('tick')} type='checkbox' checked={done} readOnly />
         <div className={cx('text', 'no-drag', { done })}>{children}</div>
 
-        <ModifyModal onModify={onModify} />
+        <ModifyModal
+          onModify={onModify}
+          text={children}
+          detail={detail.detail}
+          place={detail.place}
+          loc={detail.loc}
+        />
         {/* <div className={(cx('delete'))} onClick={e => {
           e.stopPropagation()
           onModify()
