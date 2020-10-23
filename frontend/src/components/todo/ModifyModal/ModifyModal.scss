@@ -29,6 +29,10 @@
     margin-top: -1rem;
     cursor: pointer;
     font-size: 25px;
+
+    @media (max-width: 768px) {
+      margin-right: -1rem;
+    }
   }
 
   .modal-content {
@@ -38,6 +42,7 @@
 
     @media (max-width: 768px) {
       width: calc(100% - 2rem);
+      padding: 1rem 2rem;
     }
   }
 
