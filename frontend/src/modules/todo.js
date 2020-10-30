@@ -80,11 +80,11 @@ export default handleActions({
       id,
       text,
       done,
-      detail: Map({
+      detail: {
         detail: '',
         place: '',
         loc: ''
-      })
+      }
     }))
 
     axios.post(`http://${server}/api/todo/savelist`, {
