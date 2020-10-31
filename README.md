@@ -1,4 +1,5 @@
 # Covid-Scheduler
+[![Build Status](https://travis-ci.org/5tarlight/covid-scheduler.svg?branch=master)](https://travis-ci.org/5tarlight/covid-scheduler)
 > Scheduler with Covid-decided count
 
 ## Requirements
